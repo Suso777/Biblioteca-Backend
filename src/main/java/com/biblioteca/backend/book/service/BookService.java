@@ -29,4 +29,21 @@ public class BookService {
     public Optional<Book> findBook(int id) {
         return bookRepository.findById(id);
     }
+
+    public Book updateBook(int id, Book updatedBook){
+        Optional<Book> foundBook = bookRepository.findById(id);
+
+        if(foundBook.isPresent()){
+            Book existingBook = foundBook.get();
+
+            existingBook.setTitle(updatedBook.getTitle());
+            existingBook.setISBN(updatedBook.getISBN());
+            existingBook.setPublicationYear(updatedBook.getPublicationYear());
+            existingBook.setImage(updatedBook.getImage());
+
+            return bookRepository.save(existingBook);
+        }
+
+        throw new RuntimeException("We can't find any book with that ID");
+    }
 }

@@ -2,7 +2,6 @@ package com.biblioteca.backend.book.controller;
 
 import com.biblioteca.backend.book.model.Book;
 import com.biblioteca.backend.book.service.BookService;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -41,5 +40,16 @@ public class BookController {
             return new ResponseEntity<>(foundBook.get(), HttpStatus.FOUND);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @PutMapping("/books/{id")
+    public ResponseEntity<Book> updatedBookById(@PathVariable int id, @RequestBody Book updatedBook){
+        try{
+            Book book = bookService.updateBook(id, updatedBook);
+            return new ResponseEntity<>(book, HttpStatus.OK);
+        }
+        catch (Exception exception) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 }
