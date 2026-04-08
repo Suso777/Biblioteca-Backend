@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@RestController
 public class BookController {
 
     private final BookService bookService;
@@ -42,7 +43,7 @@ public class BookController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @PutMapping("/books/{id")
+    @PutMapping("/books/{id}")
     public ResponseEntity<Book> updatedBookById(@PathVariable int id, @RequestBody Book updatedBook){
         try{
             Book book = bookService.updateBook(id, updatedBook);
