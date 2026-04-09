@@ -36,15 +36,15 @@ public class BookService {
         return bookRepository.findAll();
     }
 
-    public void deleteBook(int id) {
-        bookRepository.deleteById(id);
+    public void deleteBook(Long id) {
+        bookRepository.deleteById(Math.toIntExact(id));
     }
 
-    public Optional<Book> findBook(int id) {
+    public Optional<Book> findBook(Long id) {
         return bookRepository.findById(id);
     }
 
-    public Book updateBook(int id, Book updatedBook){
+    public Book updateBook(Long id, Book updatedBook){
         Optional<Book> foundBook = bookRepository.findById(id);
 
         if(foundBook.isPresent()){
