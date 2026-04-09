@@ -28,7 +28,7 @@ public class Book {
     @NotBlank
     private String ISBN;
     @NotNull
-    private int publicationYear;
+    private Integer publicationYear;
     @NotBlank
     private String image;
 
