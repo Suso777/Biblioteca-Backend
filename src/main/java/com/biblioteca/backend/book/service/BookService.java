@@ -37,7 +37,7 @@ public class BookService {
     }
 
     public void deleteBook(Long id) {
-        bookRepository.deleteById(Math.toIntExact(id));
+        bookRepository.deleteById((id));
     }
 
     public Optional<Book> findBook(Long id) {
