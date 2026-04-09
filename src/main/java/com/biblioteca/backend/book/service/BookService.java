@@ -1,5 +1,7 @@
 package com.biblioteca.backend.book.service;
 
+import com.biblioteca.backend.author.model.Author;
+import com.biblioteca.backend.author.repository.AuthorRepository;
 import com.biblioteca.backend.book.model.Book;
 import com.biblioteca.backend.book.repository.BookRepository;
 import org.springframework.stereotype.Service;
@@ -11,11 +13,23 @@ import java.util.Optional;
 public class BookService {
 
     private final BookRepository bookRepository;
+    private final AuthorRepository authorRepository;
 
-    public BookService(BookRepository bookRepository) { this.bookRepository = bookRepository; }
+    public BookService(BookRepository bookRepository, AuthorRepository authorRepository) {
+        this.bookRepository = bookRepository;
+        this.authorRepository = authorRepository;
+    }
 
     public Book addBook(Book newBook) {
-        return bookRepository.save(newBook);
+        Long authorID = newBook.getAuthor().getId();
+        Optional<Author> optionalAuthor = authorRepository.findById(authorID);
+
+        if(optionalAuthor.isPresent()) {
+            Author author = optionalAuthor.get();
+            newBook.setAuthor(author);
+            return bookRepository.save(newBook);
+        }
+        return newBook;
     }
 
     public List<Book> getAll() {
