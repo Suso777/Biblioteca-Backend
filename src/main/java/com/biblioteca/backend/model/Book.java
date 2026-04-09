@@ -33,12 +33,12 @@ public class Book {
     @NotBlank
     private String ISBN;
     @NotNull
-    private int publicationYear;
+    private Integer publicationYear;
     @NotBlank
     private String image;
 
     @ManyToOne
     @JoinColumn(name = "author_id")
-    @JsonIgnoreProperties("products")
+    @JsonIgnoreProperties("books")
     private Author author;
 }
