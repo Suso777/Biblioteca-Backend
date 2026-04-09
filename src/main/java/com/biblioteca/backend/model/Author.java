@@ -1,6 +1,5 @@
-package com.biblioteca.backend.author.model;
+package com.biblioteca.backend.model;
 
-import com.biblioteca.backend.book.model.Book;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

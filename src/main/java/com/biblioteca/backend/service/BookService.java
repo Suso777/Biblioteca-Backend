@@ -1,14 +1,12 @@
-package com.biblioteca.backend.book.service;
+package com.biblioteca.backend.service;
 
-import com.biblioteca.backend.author.model.Author;
-import com.biblioteca.backend.author.repository.AuthorRepository;
-import com.biblioteca.backend.book.model.Book;
-import com.biblioteca.backend.book.repository.BookRepository;
-import org.springframework.stereotype.Service;
-
+import com.biblioteca.backend.model.Author;
+import com.biblioteca.backend.model.Book;
+import com.biblioteca.backend.repository.AuthorRepository;
+import com.biblioteca.backend.repository.BookRepository;
 import java.util.List;
 import java.util.Optional;
-
+import org.springframework.stereotype.Service;
 @Service
 public class BookService {
 
