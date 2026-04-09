@@ -1,5 +1,7 @@
 package com.biblioteca.backend.book.service;
 
+import com.biblioteca.backend.author.model.Author;
+import com.biblioteca.backend.author.repository.AuthorRepository;
 import com.biblioteca.backend.book.model.Book;
 import com.biblioteca.backend.book.repository.BookRepository;
 import org.springframework.stereotype.Service;
@@ -11,26 +13,38 @@ import java.util.Optional;
 public class BookService {
 
     private final BookRepository bookRepository;
+    private final AuthorRepository authorRepository;
 
-    public BookService(BookRepository bookRepository) { this.bookRepository = bookRepository; }
+    public BookService(BookRepository bookRepository, AuthorRepository authorRepository) {
+        this.bookRepository = bookRepository;
+        this.authorRepository = authorRepository;
+    }
 
     public Book addBook(Book newBook) {
-        return bookRepository.save(newBook);
+        Long authorID = newBook.getAuthor().getId();
+        Optional<Author> optionalAuthor = authorRepository.findById(authorID);
+
+        if(optionalAuthor.isPresent()) {
+            Author author = optionalAuthor.get();
+            newBook.setAuthor(author);
+            return bookRepository.save(newBook);
+        }
+        return newBook;
     }
 
     public List<Book> getAll() {
         return bookRepository.findAll();
     }
 
-    public void deleteBook(int id) {
-        bookRepository.deleteById(id);
+    public void deleteBook(Long id) {
+        bookRepository.deleteById((id));
     }
 
-    public Optional<Book> findBook(int id) {
+    public Optional<Book> findBook(Long id) {
         return bookRepository.findById(id);
     }
 
-    public Book updateBook(int id, Book updatedBook){
+    public Book updateBook(Long id, Book updatedBook){
         Optional<Book> foundBook = bookRepository.findById(id);
 
         if(foundBook.isPresent()){
