@@ -1,7 +1,7 @@
-package com.biblioteca.backend.author.service;
+package com.biblioteca.backend.service;
 
-import com.biblioteca.backend.author.model.Author;
-import com.biblioteca.backend.author.repository.AuthorRepository;
+import com.biblioteca.backend.model.Author;
+import com.biblioteca.backend.repository.AuthorRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;

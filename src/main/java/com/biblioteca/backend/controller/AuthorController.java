@@ -1,7 +1,7 @@
-package com.biblioteca.backend.author.controller;
+package com.biblioteca.backend.controller;
 
-import com.biblioteca.backend.author.model.Author;
-import com.biblioteca.backend.author.service.AuthorService;
+import com.biblioteca.backend.model.Author;
+import com.biblioteca.backend.service.AuthorService;
 import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.http.HttpStatus;
