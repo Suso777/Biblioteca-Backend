@@ -32,7 +32,6 @@ public class Book {
     @NotBlank
     private String image;
 
-    @Setter
     @ManyToOne
     @JoinColumn(name = "author_id")
     @JsonIgnoreProperties("products")
