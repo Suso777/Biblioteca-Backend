@@ -1,6 +1,6 @@
-package com.biblioteca.backend.author.repository;
+package com.biblioteca.backend.repository;
 
-import com.biblioteca.backend.author.model.Author;
+import com.biblioteca.backend.model.Author;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AuthorRepository extends JpaRepository<Author, Long> {

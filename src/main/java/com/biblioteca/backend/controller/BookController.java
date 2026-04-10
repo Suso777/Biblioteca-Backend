@@ -1,15 +1,18 @@
-package com.biblioteca.backend.book.controller;
+package com.biblioteca.backend.controller;
 
-import com.biblioteca.backend.book.model.Book;
-import com.biblioteca.backend.book.service.BookService;
+import com.biblioteca.backend.model.Book;
+import com.biblioteca.backend.service.BookService;
+import java.util.List;
+import java.util.Optional;
+
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
-
 @RestController
+@RequestMapping("/books")
+@CrossOrigin(origins = "http://localhost:3000")
 public class BookController {
 
     private final BookService bookService;
@@ -18,22 +21,22 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @GetMapping("/books")
+    @GetMapping
     public List<Book> getAllBooks(){
         return bookService.getAll();
     }
 
-    @PostMapping("/books")
-    public Book createdBook(@RequestBody Book newBook) {
+    @PostMapping
+    public Book createdBook(@Valid @RequestBody Book newBook) {
         return bookService.addBook(newBook);
     }
 
-    @DeleteMapping("/books/{id}")
+    @DeleteMapping("/{id}")
     public void deleteBook(@PathVariable Long id){
         bookService.deleteBook(id);
     }
 
-    @GetMapping("/books/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Book> findBookById(@PathVariable Long id){
         Optional<Book> foundBook = bookService.findBook(id);
 
@@ -43,7 +46,7 @@ public class BookController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @PutMapping("/books/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Book> updatedBookById(@PathVariable Long id, @RequestBody Book updatedBook){
         try{
             Book book = bookService.updateBook(id, updatedBook);
