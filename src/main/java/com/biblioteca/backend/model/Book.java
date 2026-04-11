@@ -31,7 +31,7 @@ public class Book {
     @NotBlank
     private String title;
     @NotBlank
-    private String ISBN;
+    private String isbn;
     @NotNull
     private Integer publicationYear;
     @NotBlank

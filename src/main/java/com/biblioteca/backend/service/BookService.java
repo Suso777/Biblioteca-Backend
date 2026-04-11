@@ -49,7 +49,7 @@ public class BookService {
             Book existingBook = foundBook.get();
 
             existingBook.setTitle(updatedBook.getTitle());
-            existingBook.setISBN(updatedBook.getISBN());
+            existingBook.setIsbn(updatedBook.getIsbn());
             existingBook.setPublicationYear(updatedBook.getPublicationYear());
             existingBook.setImage(updatedBook.getImage());
 
