@@ -43,6 +43,8 @@ public class Author {
     @NotNull
     private Boolean alive;
 
+    private String image;
+
     @OneToMany(mappedBy = "author")
     @JsonIgnoreProperties("author")
     private List<Book> books = new ArrayList<>();

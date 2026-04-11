@@ -36,6 +36,7 @@ public class AuthorService {
         existingAuthor.setNationality(updatedAuthor.getNationality());
         existingAuthor.setBirthYear(updatedAuthor.getBirthYear());
         existingAuthor.setAlive(updatedAuthor.getAlive());
+        existingAuthor.setImage(updatedAuthor.getImage());
 
         return authorRepository.save(existingAuthor);
     }
