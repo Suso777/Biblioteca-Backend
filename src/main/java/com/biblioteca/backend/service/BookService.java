@@ -5,6 +5,7 @@ import com.biblioteca.backend.model.Book;
 import com.biblioteca.backend.repository.AuthorRepository;
 import com.biblioteca.backend.repository.BookRepository;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
 @Service
@@ -19,15 +20,9 @@ public class BookService {
     }
 
     public Book addBook(Book newBook) {
-        Long authorID = newBook.getAuthor().getId();
-        Optional<Author> optionalAuthor = authorRepository.findById(authorID);
-
-        if(optionalAuthor.isPresent()) {
-            Author author = optionalAuthor.get();
-            newBook.setAuthor(author);
-            return bookRepository.save(newBook);
-        }
-        return newBook;
+        Author author = getAuthorFromPayload(newBook);
+        newBook.setAuthor(author);
+        return bookRepository.save(newBook);
     }
 
     public List<Book> getAll() {
@@ -43,19 +38,27 @@ public class BookService {
     }
 
     public Book updateBook(Long id, Book updatedBook){
-        Optional<Book> foundBook = bookRepository.findById(id);
+        Book existingBook = bookRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Book not found with id: " + id));
 
-        if(foundBook.isPresent()){
-            Book existingBook = foundBook.get();
+        Author author = getAuthorFromPayload(updatedBook);
 
-            existingBook.setTitle(updatedBook.getTitle());
-            existingBook.setIsbn(updatedBook.getIsbn());
-            existingBook.setPublicationYear(updatedBook.getPublicationYear());
-            existingBook.setImage(updatedBook.getImage());
+        existingBook.setTitle(updatedBook.getTitle());
+        existingBook.setIsbn(updatedBook.getIsbn());
+        existingBook.setPublicationYear(updatedBook.getPublicationYear());
+        existingBook.setImage(updatedBook.getImage());
+        existingBook.setAuthor(author);
 
-            return bookRepository.save(existingBook);
+        return bookRepository.save(existingBook);
+    }
+
+    private Author getAuthorFromPayload(Book book) {
+        if (book.getAuthor() == null || book.getAuthor().getId() == null) {
+            throw new IllegalArgumentException("Author id is required");
         }
 
-        throw new RuntimeException("We can't find any book with that ID");
+        Long authorId = book.getAuthor().getId();
+        return authorRepository.findById(authorId)
+                .orElseThrow(() -> new NoSuchElementException("Author not found with id: " + authorId));
     }
 }

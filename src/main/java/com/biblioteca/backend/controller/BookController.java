@@ -2,10 +2,10 @@ package com.biblioteca.backend.controller;
 
 import com.biblioteca.backend.model.Book;
 import com.biblioteca.backend.service.BookService;
-import java.util.List;
-import java.util.Optional;
-
 import jakarta.validation.Valid;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,13 +27,25 @@ public class BookController {
     }
 
     @PostMapping
-    public Book createdBook(@Valid @RequestBody Book newBook) {
-        return bookService.addBook(newBook);
+    public ResponseEntity<Book> createdBook(@Valid @RequestBody Book newBook) {
+        try {
+            Book savedBook = bookService.addBook(newBook);
+            return ResponseEntity.status(HttpStatus.CREATED).body(savedBook);
+        } catch (IllegalArgumentException exception) {
+            return ResponseEntity.badRequest().build();
+        } catch (NoSuchElementException exception) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @DeleteMapping("/{id}")
-    public void deleteBook(@PathVariable Long id){
+    public ResponseEntity<Void> deleteBook(@PathVariable Long id){
+        if (bookService.findBook(id).isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
         bookService.deleteBook(id);
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/{id}")
@@ -41,19 +53,22 @@ public class BookController {
         Optional<Book> foundBook = bookService.findBook(id);
 
         if(foundBook.isPresent()){
-            return new ResponseEntity<>(foundBook.get(), HttpStatus.FOUND);
+            return ResponseEntity.ok(foundBook.get());
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return ResponseEntity.notFound().build();
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Book> updatedBookById(@PathVariable Long id, @RequestBody Book updatedBook){
+    public ResponseEntity<Book> updatedBookById(@PathVariable Long id, @Valid @RequestBody Book updatedBook){
         try{
             Book book = bookService.updateBook(id, updatedBook);
-            return new ResponseEntity<>(book, HttpStatus.OK);
+            return ResponseEntity.ok(book);
         }
-        catch (Exception exception) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        catch (IllegalArgumentException exception) {
+            return ResponseEntity.badRequest().build();
+        }
+        catch (NoSuchElementException exception) {
+            return ResponseEntity.notFound().build();
         }
     }
 }
