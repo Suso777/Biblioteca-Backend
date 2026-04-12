@@ -53,7 +53,11 @@ public class AuthorController {
             return ResponseEntity.notFound().build();
         }
 
-        authorService.deleteAuthor(id);
-        return ResponseEntity.noContent().build();
+        try {
+            authorService.deleteAuthor(id);
+            return ResponseEntity.noContent().build();
+        } catch (IllegalStateException exception) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        }
     }
 }

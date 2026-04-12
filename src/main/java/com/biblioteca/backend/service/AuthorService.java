@@ -2,6 +2,7 @@ package com.biblioteca.backend.service;
 
 import com.biblioteca.backend.model.Author;
 import com.biblioteca.backend.repository.AuthorRepository;
+import com.biblioteca.backend.repository.BookRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
@@ -10,9 +11,11 @@ import org.springframework.stereotype.Service;
 public class AuthorService {
 
     private final AuthorRepository authorRepository;
+    private final BookRepository bookRepository;
 
-    public AuthorService(AuthorRepository authorRepository) {
+    public AuthorService(AuthorRepository authorRepository, BookRepository bookRepository) {
         this.authorRepository = authorRepository;
+        this.bookRepository = bookRepository;
     }
 
     public List<Author> getAll() {
@@ -42,6 +45,9 @@ public class AuthorService {
     }
 
     public void deleteAuthor(Long id) {
+        if (bookRepository.existsByAuthorId(id)) {
+            throw new IllegalStateException("Cannot delete author with books");
+        }
         authorRepository.deleteById(id);
     }
 }
