@@ -57,6 +57,7 @@ src/main/java/com/biblioteca/backend
   - `nationality`
   - `birthYear`
   - `alive`
+  - `image`
 - `Book`
   - `id`
   - `title`
@@ -151,21 +152,21 @@ USE biblioteca_db;
 
 TRUNCATE TABLE authors;
 
-INSERT INTO authors (name, surname, nationality, birth_year, alive) VALUES
-('Gabriel', 'García Márquez', 'Colombiana', 1927, false),
-('George', 'Orwell', 'Británica', 1903, false),
-('Jane', 'Austen', 'Británica', 1775, false),
-('Isabel', 'Allende', 'Chilena', 1942, true),
-('Haruki', 'Murakami', 'Japonesa', 1949, true),
-('Stephen', 'King', 'Estadounidense', 1947, true),
-('J. K.', 'Rowling', 'Británica', 1965, true),
-('J. R. R.', 'Tolkien', 'Británica', 1892, false),
-('Miguel', 'de Cervantes', 'Española', 1547, false),
-('Julio', 'Verne', 'Francesa', 1828, false),
-('Agatha', 'Christie', 'Británica', 1890, false),
-('Carlos', 'Ruiz Zafón', 'Española', 1964, false),
-('Dan', 'Brown', 'Estadounidense', 1964, true),
-('Suzanne', 'Collins', 'Estadounidense', 1962, true);
+INSERT INTO authors (name, surname, nationality, birth_year, alive, image) VALUES
+('Gabriel', 'García Márquez', 'Colombiana', 1927, false, 'https://commons.wikimedia.org/wiki/Special:FilePath/Gabriel%20Garcia%20Marquez%201984.jpg'),
+('George', 'Orwell', 'Británica', 1903, false, 'https://commons.wikimedia.org/wiki/Special:FilePath/George%20Orwell%20press%20photo.jpg'),
+('Jane', 'Austen', 'Británica', 1775, false, 'https://commons.wikimedia.org/wiki/Special:FilePath/Jane%20Austen.jpg'),
+('Isabel', 'Allende', 'Chilena', 1942, true, 'https://commons.wikimedia.org/wiki/Special:FilePath/Isabel%20Allende%20-%20001.jpg'),
+('Haruki', 'Murakami', 'Japonesa', 1949, true, 'https://commons.wikimedia.org/wiki/Special:FilePath/Murakami%20Haruki%20%282009%29.jpg'),
+('Stephen', 'King', 'Estadounidense', 1947, true, 'https://commons.wikimedia.org/wiki/Special:FilePath/Stephen%20King%20-%202011.jpg'),
+('J. K.', 'Rowling', 'Británica', 1965, true, 'https://commons.wikimedia.org/wiki/Special:FilePath/J.%20K.%20Rowling%202010.jpg'),
+('J. R. R.', 'Tolkien', 'Británica', 1892, false, 'https://commons.wikimedia.org/wiki/Special:FilePath/J.%20R.%20R.%20Tolkien%2C%20ca.%201925.jpg'),
+('Miguel', 'de Cervantes', 'Española', 1547, false, 'https://commons.wikimedia.org/wiki/Special:FilePath/Miguel%20de%20Cervantes%20Saavedra%20cph.3b18360.jpg'),
+('Julio', 'Verne', 'Francesa', 1828, false, 'https://commons.wikimedia.org/wiki/Special:FilePath/Jules%20Verne%20by%20%C3%89tienne%20Carjat.jpg'),
+('Agatha', 'Christie', 'Británica', 1890, false, 'https://commons.wikimedia.org/wiki/Special:FilePath/Agatha%20Christie.JPG'),
+('Carlos', 'Ruiz Zafón', 'Española', 1964, false, 'https://commons.wikimedia.org/wiki/Special:FilePath/CarlosRuizZafon2009.jpg'),
+('Dan', 'Brown', 'Estadounidense', 1964, true, 'https://commons.wikimedia.org/wiki/Special:FilePath/Dan%20Brown%2C%202006.jpg'),
+('Suzanne', 'Collins', 'Estadounidense', 1962, true, 'https://commons.wikimedia.org/wiki/Special:FilePath/Suzanne%20Collins%20David%20Shankbone%202010.jpg');
 
 SELECT * FROM authors;
 ```
