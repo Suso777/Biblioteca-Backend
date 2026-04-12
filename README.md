@@ -261,6 +261,36 @@ SELECT * FROM books;
 
 ![Database Diagram](./assets/img/BibliotecaDrawio.png)
 
+## 🧪 Testing
+![JUnit 5](https://img.shields.io/badge/JUnit-5-25A162?style=flat-square&logo=junit5&logoColor=white) ![Mockito](https://img.shields.io/badge/Mockito-Framework-78AB46?style=flat-square) ![Coverage](https://img.shields.io/badge/Coverage-Functional-success?style=flat-square)
+
+El proyecto incluye una suite de tests unitarios y de integración para garantizar la calidad del código y la integridad de la lógica de negocio.
+
+### Capas Testeadas
+- **Controllers (`MockMvc`):** Pruebas de integración de los endpoints REST, verificando los códigos de estado HTTP (`200 OK`, `201 Created`, `204 No Content`, `404 Not Found`), el formato JSON de respuesta y el manejo de peticiones.
+- **Services (`Mockito`):** Pruebas unitarias de la lógica de negocio aislada mediante el uso de Mocks para los repositorios. Se validan reglas críticas como:
+    - Impedir el borrado de un autor si tiene libros asociados (`IllegalStateException`).
+    - Validar la existencia de un autor antes de crear o actualizar un libro (`NoSuchElementException`).
+
+### Ejecución de los tests
+Para ejecutar toda la suite de pruebas desde la terminal:
+
+```bash
+./mvnw test
+```
+
+> [!TIP]
+> Si utilizas IntelliJ IDEA, puedes hacer clic derecho sobre la carpeta src/test/java y seleccionar 'Run All Tests' para ver los resultados de forma visual.
+
+### Ejemplo de cobertura
+* **AuthorControllerTest**: CRUD completo de autores con validación de estados HTTP.
+
+* **BookControllerTest**: CRUD completo de libros y validación de integridad en las relaciones.
+
+* **AuthorServiceTest**: Pruebas de lógica de negocio y validación de restricciones de borrado.
+
+* **BookServiceTest**: Validación de asignación de autores y manejo de excepciones personalizadas
+
 ## 👥 Equipo
 ![Members](https://img.shields.io/badge/Members-5-1d3557?style=flat-square) ![Work](https://img.shields.io/badge/Work-Team%20Project-457b9d?style=flat-square)
 

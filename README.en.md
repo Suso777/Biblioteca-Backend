@@ -261,6 +261,36 @@ SELECT * FROM books;
 
 ![Database Diagram](./assets/img/BibliotecaDrawio.png)
 
+## 🧪 Testing
+![JUnit 5](https://img.shields.io/badge/JUnit-5-25A162?style=flat-square&logo=junit5&logoColor=white) ![Mockito](https://img.shields.io/badge/Mockito-Framework-78AB46?style=flat-square) ![Coverage](https://img.shields.io/badge/Coverage-Functional-success?style=flat-square)
+
+The project includes a suite of unit and integration tests to ensure code quality and the integrity of the business logic.
+
+### Tested Layers
+- **Controllers (`MockMvc`):** Integration tests for REST endpoints, verifying HTTP status codes (200 OK, 201 Created, 204 No Content, 404 Not Found), JSON response formats, and request handling.
+- **Services (`Mockito`):** Unit tests for isolated business logic using Mocks for repositories. Critical rules are validated, such as:
+    - Preventing the deletion of an author if they have associated books (`IllegalStateException`).
+    - Validating the existence of an author before creating or updating a book (`NoSuchElementException`).
+
+### Running the tests
+To run the entire test suite from the terminal:
+
+```bash
+./mvnw test
+```
+
+> [!TIP]
+> If you use Intellij IDEA, you can right-click on the src/test/java folder and select 'Run All Tests' to view the results in a visual and detailed manner.
+
+### Coverage Examples
+* **AuthorControllerTest**: Full CRUD for authors with HTTP status validation.
+
+* **BookControllerTest**: Full CRUD for books and relationship integrity validation.
+
+* **AuthorServiceTest**: Business logic tests and deletion constraint validation.
+* 
+* **BookServiceTest**: Validation of author assignment and custom exception handling.
+
 ## 👥 Team
 ![Members](https://img.shields.io/badge/Members-5-1d3557?style=flat-square) ![Work](https://img.shields.io/badge/Work-Team%20Project-457b9d?style=flat-square)
 
