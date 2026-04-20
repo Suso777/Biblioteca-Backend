@@ -1,16 +1,16 @@
 # 📚 Biblioteca Backend
-![Language](https://img.shields.io/badge/Language-ES-c0392b?style=flat-square) ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-Backend-6db33f?style=flat-square) ![MySQL](https://img.shields.io/badge/Database-MySQL-00758f?style=flat-square)
+![Language](https://img.shields.io/badge/Language-EN-1d4ed8?style=flat-square) ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-Backend-6db33f?style=flat-square) ![MySQL](https://img.shields.io/badge/Database-MySQL-00758f?style=flat-square)
 
-[English Version](README.en.md)
+[Versión en español](README.md)
 
-## 📝 Descripción
+## 📝 Description
 ![Scope](https://img.shields.io/badge/Scope-REST%20API-0a7ea4?style=flat-square) ![Domain](https://img.shields.io/badge/Domain-Library-b5651d?style=flat-square)
 
-Biblioteca Backend es el backend de una aplicación completa de biblioteca formada por un frontend independiente y esta API REST. Este repositorio se encarga de la gestión de autores y libros, organiza la lógica en capas `controller`, `service`, `repository` y `model`, y persiste la información en MySQL mediante Spring Data JPA / Hibernate.
+Biblioteca Backend is the backend of a complete library application composed of an independent frontend and this REST API. This repository is responsible for managing authors and books, organizes its logic into `controller`, `service`, `repository`, and `model` layers, and persists data in MySQL through Spring Data JPA / Hibernate.
 
-El backend está preparado para ser consumido por un cliente frontend separado, por lo que forma parte de una solución compuesta por frontend y backend. Además de cubrir las operaciones CRUD sobre `authors` y `books`, la documentación facilita la replicación del entorno desde cero con una carga inicial de datos pensada para pruebas en Postman y visualización del modelo en Draw.io / Diagrams.net.
+The backend is designed to be consumed by a separate frontend client, so it is part of a frontend-backend solution rather than an isolated API. In addition to covering CRUD operations for `authors` and `books`, the documentation makes it easy to replicate the environment from scratch with an initial dataset prepared for Postman testing and Draw.io / Diagrams.net database visualization.
 
-## 🛠️ Tecnologías
+## 🛠️ Technologies
 ![Java](https://img.shields.io/badge/Java-25-e76f00?style=flat-square) ![Build](https://img.shields.io/badge/Build-Maven-1565c0?style=flat-square) ![ORM](https://img.shields.io/badge/ORM-JPA%20%2F%20Hibernate-59666c?style=flat-square) ![Tools](https://img.shields.io/badge/Tools-Postman%20%2F%20Draw.io-5e548e?style=flat-square)
 
 - Java 25
@@ -21,7 +21,7 @@ El backend está preparado para ser consumido por un cliente frontend separado, 
 - Postman
 - Draw.io / Diagrams.net
 
-## 🧱 Arquitectura del proyecto
+## 🧱 Project Architecture
 ![Pattern](https://img.shields.io/badge/Pattern-Controller%20Service%20Repository-264653?style=flat-square) ![Package](https://img.shields.io/badge/Package-com.biblioteca.backend-2a9d8f?style=flat-square)
 
 ```text
@@ -41,13 +41,13 @@ src/main/java/com/biblioteca/backend
 └── BibliotecaBackendApplication.java
 ```
 
-- `controller` expone los endpoints REST para autores y libros.
-- `service` centraliza la lógica de negocio.
-- `repository` gestiona el acceso a datos con Spring Data JPA.
-- `model` define las entidades y la relación entre `Author` y `Book`.
-- La estructura del backend está preparada para ser consumida por un frontend independiente dentro de la aplicación completa.
+- `controller` exposes the REST endpoints for authors and books.
+- `service` centralizes business logic.
+- `repository` handles data access through Spring Data JPA.
+- `model` defines the entities and the relationship between `Author` and `Book`.
+- The backend structure is ready to be consumed by an independent frontend within the complete application.
 
-## 🗃️ Modelo de datos
+## 🗃️ Data Model
 ![Entities](https://img.shields.io/badge/Entities-Author%20%2B%20Book-8d99ae?style=flat-square) ![Relation](https://img.shields.io/badge/Relation-One%20to%20Many-ef476f?style=flat-square)
 
 - `Author`
@@ -65,53 +65,53 @@ src/main/java/com/biblioteca/backend
   - `publicationYear`
   - `image`
   - `author_id`
-- Relación
-  - one-to-many entre `Author` y `Book`
-  - un autor puede tener muchos libros
-  - cada libro pertenece a un único autor
+- Relationship
+  - one-to-many between `Author` and `Book`
+  - one author can have many books
+  - each book belongs to one author
 
 ## 🔗 Endpoints
 ![REST](https://img.shields.io/badge/API-REST-118ab2?style=flat-square) ![Resources](https://img.shields.io/badge/Resources-Authors%20%2F%20Books-06d6a0?style=flat-square)
 
-| Recurso | Método | Ruta | Descripción |
+| Resource | Method | Path | Description |
 | --- | --- | --- | --- |
-| Authors | `GET` | `/authors` | Obtiene todos los autores |
-| Authors | `GET` | `/authors/{id}` | Obtiene un autor por id |
-| Authors | `POST` | `/authors` | Crea un autor |
-| Authors | `PUT` | `/authors/{id}` | Actualiza un autor existente |
-| Authors | `DELETE` | `/authors/{id}` | Elimina un autor |
-| Books | `GET` | `/books` | Obtiene todos los libros |
-| Books | `GET` | `/books/{id}` | Obtiene un libro por id |
-| Books | `POST` | `/books` | Crea un libro |
-| Books | `PUT` | `/books/{id}` | Actualiza un libro existente |
-| Books | `DELETE` | `/books/{id}` | Elimina un libro |
+| Authors | `GET` | `/authors` | Returns all authors |
+| Authors | `GET` | `/authors/{id}` | Returns one author by id |
+| Authors | `POST` | `/authors` | Creates an author |
+| Authors | `PUT` | `/authors/{id}` | Updates an existing author |
+| Authors | `DELETE` | `/authors/{id}` | Deletes an author |
+| Books | `GET` | `/books` | Returns all books |
+| Books | `GET` | `/books/{id}` | Returns one book by id |
+| Books | `POST` | `/books` | Creates a book |
+| Books | `PUT` | `/books/{id}` | Updates an existing book |
+| Books | `DELETE` | `/books/{id}` | Deletes a book |
 
-## 🌐 Frontend relacionado
+## 🌐 Related Frontend
 ![Frontend](https://img.shields.io/badge/Repository-Frontend-1d3557?style=flat-square) ![Integration](https://img.shields.io/badge/Integration-Separate%20Client-457b9d?style=flat-square)
 
-Este backend forma parte de una solución completa de biblioteca y está pensado para ser consumido por un frontend independiente. Si quieres revisar la interfaz cliente que utiliza esta API REST, puedes acceder a su repositorio aquí:
+This backend is part of a complete library solution and is intended to be consumed by an independent frontend. If you want to review the client interface that uses this REST API, you can find its repository here:
 
 [Biblioteca Frontend](https://github.com/Maria19761976/BibliotecaFronted)
 
-## ⚙️ Configuración y ejecución
+## ⚙️ Configuration and Run
 ![Config](https://img.shields.io/badge/Config-application.properties-f4a261?style=flat-square) ![Hibernate](https://img.shields.io/badge/Hibernate-ddl--auto%3Dupdate-6c757d?style=flat-square) ![Credentials](https://img.shields.io/badge/Credentials-root%20%2F%20root-d62828?style=flat-square)
 
-Para replicar el proyecto desde cero, sigue este orden:
+To replicate the project from scratch, follow this order:
 
-1. Clona el repositorio.
+1. Clone the repository.
 
    ```bash
    git clone <repository-url>
    cd Biblioteca-Backend
    ```
 
-2. Crea la base de datos MySQL con este nombre exacto:
+2. Create the MySQL database with this exact name:
 
    ```sql
    CREATE DATABASE biblioteca_db;
    ```
 
-3. Revisa `src/main/resources/application.properties`, porque el proyecto está configurado así:
+3. Review `src/main/resources/application.properties`, because the project is currently configured like this:
 
    ```properties
    spring.datasource.url=jdbc:mysql://localhost:3306/biblioteca_db?useSSL=false&serverTimezone=UTC
@@ -124,9 +124,9 @@ Para replicar el proyecto desde cero, sigue este orden:
    spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
    ```
 
-4. Si no usas `root` / `root`, modifica `spring.datasource.username` y `spring.datasource.password` antes de ejecutar el backend.
+4. If you do not use `root` / `root`, update `spring.datasource.username` and `spring.datasource.password` before running the backend.
 
-5. Ejecuta el backend una primera vez para que Hibernate cree automáticamente las tablas:
+5. Run the backend once so Hibernate can create the tables automatically:
 
    ```powershell
    .\mvnw.cmd spring-boot:run
@@ -136,14 +136,14 @@ Para replicar el proyecto desde cero, sigue este orden:
    ./mvnw spring-boot:run
    ```
 
-6. Solo después del primer arranque, ejecuta las queries SQL en MySQL Workbench.
+6. Only after the first startup, run the SQL queries in MySQL Workbench.
 
-7. Ejecuta primero las queries de `authors` y después las de `books`, porque `books` depende de `author_id`.
+7. Run the `authors` queries first and the `books` queries after that, because `books` depends on `author_id`.
 
-## 🧪 Queries SQL para MySQL Workbench
+## 🧪 SQL Queries for MySQL Workbench
 ![Workbench](https://img.shields.io/badge/MySQL-Workbench-005c84?style=flat-square) ![Seed](https://img.shields.io/badge/Data-Initial%20Seed-43aa8b?style=flat-square)
 
-Ejecuta estas queries únicamente después del primer arranque del backend. El orden correcto es: primero `authors` y después `books`.
+Run these queries only after the backend has been started for the first time. The correct order is: first `authors`, then `books`.
 
 **AUTHORS**
 
@@ -246,22 +246,22 @@ INSERT INTO books (title, isbn, publication_year, image, author_id) VALUES
 SELECT * FROM books;
 ```
 
-## 📸 Capturas del proyecto
+## 📸 Project Screenshots
 ![Validation](https://img.shields.io/badge/Validation-Postman-ff6c37?style=flat-square) ![Diagram](https://img.shields.io/badge/Diagram-Draw.io-ffb703?style=flat-square)
 
-**Postman - comprobación de `GET /authors` y `GET /books`**
+**Postman - verification of `GET /authors` and `GET /books`**
 
 ![Postman Get All](./assets/img/GetAll.png)
 
-**Postman - comprobación de `GET /authors/{id}` y `GET /books/{id}`**
+**Postman - verification of `GET /authors/{id}` and `GET /books/{id}`**
 
 ![Postman Get By Id](./assets/img/GetById.png)
 
-**Modelo de base de datos en Draw.io / Diagrams.net**
+**Database model in Draw.io / Diagrams.net**
 
 ![Database Diagram](./assets/img/BibliotecaDrawio.png)
 
-## 👥 Equipo
+## 👥 Team
 ![Members](https://img.shields.io/badge/Members-5-1d3557?style=flat-square) ![Work](https://img.shields.io/badge/Work-Team%20Project-457b9d?style=flat-square)
 
 - David Navarro
@@ -270,7 +270,7 @@ SELECT * FROM books;
 - María Pérez
 - Suso Suárez
 
-## 🚦 Estado del proyecto
+## 🚦 Project Status
 ![Status](https://img.shields.io/badge/Status-Functional-2a9d8f?style=flat-square) ![Scope](https://img.shields.io/badge/Scope-CRUD-e9c46a?style=flat-square)
 
-El proyecto cuenta con una base funcional para gestionar autores y libros mediante operaciones CRUD, persistencia en MySQL y validación de endpoints con Postman. Como parte de una aplicación completa de biblioteca, este backend está listo para ser consumido por el frontend separado y la documentación incluida permite clonar el repositorio, configurar la base de datos y cargar los datos iniciales siguiendo un flujo claro.
+The project currently provides a functional base to manage authors and books through CRUD operations, MySQL persistence, and endpoint validation with Postman. As part of a complete library application, this backend is ready to be consumed by the separate frontend, and the documentation allows the repository to be cloned, configured, and populated with the initial dataset using a clear setup flow.

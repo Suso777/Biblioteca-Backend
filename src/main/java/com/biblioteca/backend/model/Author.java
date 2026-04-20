@@ -1,6 +1,5 @@
-package com.biblioteca.backend.author.model;
+package com.biblioteca.backend.model;
 
-import com.biblioteca.backend.book.model.Book;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,7 +11,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,7 +20,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class Author {
 
     @Id
@@ -43,6 +40,8 @@ public class Author {
 
     @NotNull
     private Boolean alive;
+
+    private String image;
 
     @OneToMany(mappedBy = "author")
     @JsonIgnoreProperties("author")
